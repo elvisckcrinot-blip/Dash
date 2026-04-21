@@ -10,16 +10,10 @@ def get_kpi_data():
     }
 
 def get_truck_flow_data():
-    # Simulation d'un flux de camions sur 24h au Bénin
+    # Simulation d'un flux de camions sur 24h
     heures = list(range(0, 24))
-    # Simulation de trafic : pic à 10h et 16h
-    flux = [5, 3, 2, 2, 8, 25, 45, 80, 110, 130, 115, 95, 80, 85, 100, 125, 140, 120, 85, 60, 40, 25, 15, 10]
-    
-    df = pd.DataFrame({
-        "Heure": heures,
-        "Nombre de Camions": flux
-    })
-    return df
+    flux = [5, 3, 2, 2, 10, 30, 85, 120, 150, 140, 110, 100, 90, 110, 130, 160, 145, 100, 70, 50, 40, 30, 20, 10]
+    return pd.DataFrame({"Heure": heures, "Nombre de Camions": flux})
 
 def get_shipment_data():
     data = [
@@ -28,3 +22,4 @@ def get_shipment_data():
         {"ID": "BJ-103", "Transporteur": "Africa Trans", "Origine": "Port Cotonou", "Dest.": "Malanville", "Statut": "Retard"},
     ]
     return pd.DataFrame(data)
+        
