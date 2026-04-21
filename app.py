@@ -1,6 +1,6 @@
 import streamlit as st
 import plotly.express as px
-# On ajoute get_truck_flow_data ici
+# Correction de l'import : on ajoute get_truck_flow_data
 from models import get_kpi_data, get_shipment_data, get_truck_flow_data
 
 # 1. Configuration de la page
@@ -33,10 +33,9 @@ st.write("")
 left_col, right_col = st.columns([2, 1])
 
 with left_col:
-    st.subheader(" Flux de Camions (Port ↔ GDIZ)")
+    st.subheader("📊 Flux de Camions (Port ↔ GDIZ)")
+    # Utilisation des nouvelles données béninoises
     df_trucks = get_truck_flow_data()
-    
-    # Graphique en "Area" pour un look plus moderne
     fig = px.area(df_trucks, x="Heure", y="Nombre de Camions", 
                   title="Intensité du trafic journalier (Temps Réel)",
                   template="plotly_dark",
@@ -55,9 +54,7 @@ with right_col:
 # 5. Tableau des Expéditions (Bas)
 st.subheader(" Suivi des Expéditions Nationales")
 df_exp = get_shipment_data()
-# Ajout d'un style pour le tableau
 st.dataframe(df_exp, use_container_width=True)
 
 st.markdown("---")
 st.caption("Application de monitoring développée pour la logistique du Bénin.")
-    
